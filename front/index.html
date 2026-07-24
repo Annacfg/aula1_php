@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>aula1 de php</title>
+</head>
+<body>
+    <h1>Teste de Back-End</h1>
+    <p id="resultado">Carregando...</p>
+    <p id="status">Status:</p>
+    <script>
+        fetch("http://localhost:8000")
+            .then(resposta => resposta.json())
+            .then(dados => {
+                document.getElementById("resultado").innerText = dados.mensagem;
+                document.getElementById("status").innerText = "Status: " + dados.status;
+            })
+            .catch(erro => {
+                document.getElementById("resultado").innerText = "Erro ao conectar: " + erro;
+            });
+    </script>
+</body>
+</html>
